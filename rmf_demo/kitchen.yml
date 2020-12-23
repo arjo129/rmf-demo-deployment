@@ -19,6 +19,7 @@ suites:
   - name: server
     attributes:
     data_bags_path: "test/integration/data_bags"
+    run_list: [ "recipe[rmf_demo::server]" ]
     verifier:
       inspec_tests:
         - test/integration/server

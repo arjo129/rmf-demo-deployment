@@ -1,0 +1,15 @@
+[NetDev]
+Name=wg0
+Kind=wireguard
+Description=Wireguard VPN
+
+[WireGuard]
+PrivateKey=<%= @private_key %>
+
+<%- @wireguard_peers.each do |peer| -%>
+[WireGuardPeer]
+PublicKey=<%= peer['public_key'] %>
+PresharedKey=<%= peer['preshared_key'] %>
+AllowedIPs=0.0.0.0/0
+
+<%- end -%>

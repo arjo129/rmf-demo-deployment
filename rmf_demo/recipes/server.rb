@@ -7,25 +7,30 @@ execute 'networkctl-reload' do
   action :nothing
 end
 
+sysctl 'ipv4-forwarding' do
+  comment 'Forward IPv4 traffic for WireGuard VPN'
+  key 'net.ipv4.ip_forward'
+  value 1
+end
 
-wireguard_key = search(:rmf_demo_wireguard_peers, "id:server").first
+wireguard_server = search(:rmf_demo_wireguard_peers, "id:server").first
 wireguard_peers = search(:rmf_demo_wireguard_peers, "NOT id:server")
 template '/etc/systemd/network/wg0.netdev' do
   owner 'root'
   group 'systemd-network'
   mode '0640'
   variables Hash[
-    private_key: wireguard_key['private_key'],
+    private_key: wireguard_server['private_key'],
     wireguard_peers: wireguard_peers
   ]
   notifies :run, 'execute[networkctl-reload]'
 end
-
 template '/etc/systemd/network/10-wg0.network' do
   owner 'root'
   group 'systemd-network'
   mode '0640'
   variables Hash[
+    address: wireguard_server['address']
   ]
   notifies :run, 'execute[networkctl-reload]'
 end

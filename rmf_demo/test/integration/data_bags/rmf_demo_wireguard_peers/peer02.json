@@ -1,5 +1,6 @@
 {
 	"id": "peer02",
+	"address": "172.27.0.11",
 	"environment": "default",
 	"private_key": "iDRu6DcVpziLNpnVt8u7Tf+kT+6x/dsnRbMmea8mpFc=",
 	"public_key": "coiMfqybhN/hh3tlAihxTTM9Kfd4LOwPL/TrO+cgr0s=",

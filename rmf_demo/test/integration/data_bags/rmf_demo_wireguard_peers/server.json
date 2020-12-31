@@ -1,5 +1,7 @@
 {
 	"id": "server",
+	"address": "172.27.0.1",
+	"endpoint": "10.10.1.1",
 	"environment": "default",
 	"private_key": "SO6XFW9m5Szt5KRq93EGcNma7CIFssPCnSqLppv+gU0=",
 	"public_key": "7xpkcqlE8JsIycBewCTY2SH5WMSMNxSux1+0jEaS7jo=",

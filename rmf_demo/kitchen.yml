@@ -14,12 +14,24 @@ verifier:
 
 platforms:
   - name: ubuntu-20.04
+  - name: ubuntu-16.04
 
 suites:
   - name: server
+    excludes:
+      - ubuntu-16.04
     attributes:
     data_bags_path: "test/integration/data_bags"
     run_list: [ "recipe[rmf_demo::server]" ]
     verifier:
       inspec_tests:
         - test/integration/server
+  - name: client
+    attributes:
+      rmf_demo:
+        wireguard_client_id: peer01
+    data_bags_path: "test/integration/data_bags"
+    run_list: [ "recipe[rmf_demo::client]" ]
+    verifier:
+      inspec_tests:
+        - test/integration/client

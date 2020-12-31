@@ -2,5 +2,10 @@
 Name=wg0
 
 [Network]
-Address=172.27.0.1/22
+Address=<%= @address %>
+
+[Route]
+Gateway=<%= @gateway %>
+GatewayOnLink=true
+Destination=<%= @destination %>
 

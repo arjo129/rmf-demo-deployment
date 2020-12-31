@@ -10,6 +10,7 @@ PrivateKey=<%= @private_key %>
 [WireGuardPeer]
 PublicKey=<%= peer['public_key'] %>
 PresharedKey=<%= peer['preshared_key'] %>
+<%- if peer['endpoint'] -%>Endpoint=<%= peer['endpoint'] %><%- end -%>
 AllowedIPs=0.0.0.0/0
 
 <%- end -%>

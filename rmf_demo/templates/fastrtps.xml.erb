@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<dds>
+<profiles>
+<participant profile_name="initial_peers_example_profile" is_default_profile="true">
+<rtps>
+<builtin>
+<initialPeersList>
+<%- @wireguard_peers.each do |peer| -%>
+        <locator>
+                <udpv4>
+                 <address><%= peer['address'] %></address>
+                 <port>7400</port>
+                </udpv4>
+        </locator>
+<%- end -%>
+</initialPeersList>
+</builtin>
+</rtps>
+</participant>
+</profiles>
+</dds>
+

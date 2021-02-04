@@ -1,0 +1,6 @@
+#cloud-config
+# Add groups to the system
+
+# Downloads the golang package
+packages:
+  - golang-go

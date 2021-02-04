@@ -48,10 +48,10 @@ apt_repository 'gazebo' do
   key 'https://packages.osrfoundation.org/gazebo.key'
 end
 
-apt_repository 'rmf' do
-  uri 'http://rmf.servehttp.com/ubuntu/main'
-  components %w[main]
-  key 'http://rmf.servehttp.com/repos.key'
-end
+#apt_repository 'rmf' do
+#  uri 'http://rmf.servehttp.com/ubuntu/main'
+#  components %w[main]
+#  key 'http://rmf.servehttp.com/repos.key'
+#end
 
-package 'ros-foxy-demos'
+#package 'ros-foxy-demos'

@@ -31,6 +31,10 @@ resource "aws_key_pair" "rmf_demo" {
   tags = var.standard_tags
 }
 
+data "template_file" "user_data" {
+  template = file("../scripts/add_stuff.yaml")
+}
+
 resource "aws_instance" "rmf_demo_server" {
   instance_type = "c5a.xlarge"
   ami = data.aws_ami.ubuntu_2004_latest.id
@@ -44,6 +48,7 @@ resource "aws_instance" "rmf_demo_server" {
   private_ip = "10.0.1.10"
   tags = merge(var.standard_tags,
   { Name = "RMF Demo - Server" })
+  user_data = data.template_file.user_data.rendered
 }
 
 output "rmf_demo_server_public_ip" {
